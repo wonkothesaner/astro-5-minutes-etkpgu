@@ -1,0 +1,20 @@
+---
+import { getEditableAttributes } from '../../utils/storyblok.js'
+import Feature from '../components/Feature.astro';
+
+const { blok } = Astro.props
+
+const editableAttributes = await getEditableAttributes(blok)
+---
+
+<section
+	data-blok-c={editableAttributes['data-blok-c']}
+	data-blok-uid={editableAttributes['data-blok-uid']}
+	class:list={['py-36 bg-zinc-100', { 'storyblok__outline': editableAttributes }]}
+>
+	<div class="container grid grid-cols-3 gap-12">
+		{blok.columns?.map(blok => {
+			return <Feature blok={blok} />
+		})}
+	</div>
+</section>

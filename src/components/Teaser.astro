@@ -1,0 +1,17 @@
+---
+import { getEditableAttributes } from '../../utils/storyblok.js'
+
+const { blok } = Astro.props
+
+const editableAttributes = await getEditableAttributes(blok)
+---
+
+<section
+	data-blok-c={editableAttributes['data-blok-c']}
+	data-blok-uid={editableAttributes['data-blok-uid']}
+	class:list={['py-32', { 'storyblok__outline': editableAttributes }]}
+>
+	<div class="container">
+		<h2 class="text-5xl font-light text-gray-700">{blok.headline}</h2>
+	</div>
+</section>

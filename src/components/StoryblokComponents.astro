@@ -1,0 +1,18 @@
+---
+import Teaser from '../components/Teaser.astro';
+import Feature from '../components/Feature.astro';
+import Grid from '../components/Grid.astro';
+
+const { story } = Astro.props
+---
+
+{story.content.body?.map(blok => {
+	switch(blok.component) {
+		case 'teaser':
+			return <Teaser blok={blok} />
+		case 'feature':
+			return <Feature blok={blok} />
+		case 'grid':
+			return <Grid blok={blok} />
+	}
+})}

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { getStory } from '../../utils/storyblok.js'
+
+const story = await getStory('home')
+---
+
+<script>
+  import { activateStoryblokBridge } from '../../utils/storyblok.js'
+	activateStoryblokBridge()
+</script>
+
+<BaseLayout story={story} />
